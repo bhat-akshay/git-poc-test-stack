@@ -1,0 +1,49 @@
+{
+	"metadata": {},
+	"apiVersion": "v2",
+	"kind": "facets.modules.common.application",
+	"disabled": true,
+	"spec": {
+		"env": {},
+		"loadbalancing": {
+			"rules": [
+        {
+					"ingress": "ingressv1",
+					"path": "/",
+					"portName": "http",
+					"domainPrefix": "fp1"
+				},
+        {
+					"ingress": "ingressv1",
+					"path": "/time",
+					"portName": "http",
+					"domainPrefix": "time"
+				}
+      ]
+		},
+		"permission": [],
+		"release": {
+			"strategy": "RollingUpdate",
+			"build": {
+				"image": "vishnukvfacets/facets-testing-api:latest"
+			}
+		},
+		"runtime": {
+			"size": {
+				"value": "small",
+				"namespace": "GP"
+			},
+			"autoscaling": {
+				"cpuThreshold": "50",
+				"max": 1,
+				"min": 1
+			},
+			"ports": [
+				{
+					"name": "http",
+					"port": 80
+				}
+			]
+		}
+	}
+}

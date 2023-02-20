@@ -1,0 +1,58 @@
+{
+    "$schema": "https://docs.facets.cloud/schemas/application/instances/application.schema",
+    "kind": "facets.modules.common.application",
+    "disabled": true,
+    "apiVersion": "v2",
+    "metadata": {},
+    "spec": {
+        "env": {},
+        "loadbalancing": {
+            "rules": [
+                {
+                    "ingress": "appwindows",
+                    "path": "/",
+                    "portName" : "http"
+                }
+    ]
+        },
+        "permission": [],
+        "release": {
+            "strategy": "RollingUpdate",
+            "build": {
+                "image": "mcr.microsoft.com/windows/servercore/iis:latest"
+            }
+        },
+        "runtime": {
+            "size": {
+                "value": "small",
+                "namespace": "GP"
+            },
+            "autoscaling": {
+                "cpuThreshold": "50",
+                "max": 1,
+                "min": 1
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 80
+                }
+            ]
+        }
+    },
+    "advanced": {
+        "kubernetes": {
+            "tolerations": [
+                {
+                    "key": "dedicated",
+                    "operator": "Equal",
+                    "value": "windowsnode",
+                    "effect": "NoSchedule"
+                }
+            ],
+            "nodeSelector": {
+                "kubernetes.io/os": "windows"
+            }
+        }
+    }
+}
