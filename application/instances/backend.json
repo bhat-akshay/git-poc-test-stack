@@ -1,0 +1,42 @@
+{
+  "$schema": "https://docs.facets.cloud/schemas/application/instances/application.schema",
+  "kind": "facets.modules.common.application",
+  "disabled": true,
+  "apiVersion": "v2",
+  "metadata": {
+    "labels": {
+      "sidecar.istio.io/inject": "true"
+    }
+  },
+  "spec": {
+    "env": {},
+    "loadbalancing": {
+      "rules": []
+    },
+    "permission": [],
+    "release": {
+      "strategy": "RollingUpdate",
+      "build": {
+        "artifactory": "default",
+        "name": "backend"
+      }
+    },
+    "runtime": {
+      "size": {
+        "value": "small",
+        "namespace": "GP"
+      },
+      "autoscaling": {
+        "cpuThreshold": "50",
+        "max": 6,
+        "min": 2
+      },
+      "ports": [
+        {
+          "name": "port8080",
+          "port": 80
+        }
+      ]
+    }
+  }
+}

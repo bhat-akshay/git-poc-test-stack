@@ -1,0 +1,32 @@
+{
+  "disabled": true,
+  "kind": "facets.modules.common.security",
+  "apiVersion": "v1",
+  "metadata": {
+    "configValues": "https://github.com/falcosecurity/charts/tree/master/falco"
+  },
+  "spec": {
+    "falco": {
+      "config": {
+        "falco": {
+          "readinessProbe": {
+            "initialDelaySeconds": 180
+          },
+          "livenessProbe": {
+            "initialDelaySeconds": 180
+          }
+        },
+        "resources": {
+          "limits": {
+            "cpu": "200m",
+            "memory": "512Mi"
+          },
+          "requests": {
+            "cpu": "100m",
+            "memory": "100Mi"
+          }
+        }
+      }
+    }
+  }
+}
