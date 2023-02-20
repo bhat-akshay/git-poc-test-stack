@@ -5,6 +5,6 @@
     "pmm": false,
     "newrelic_infra_monitoring": false,
     "pod_dumps_archival": false,
-    "spot_fleet": true
+    "spot_fleet": false
   }
 }
