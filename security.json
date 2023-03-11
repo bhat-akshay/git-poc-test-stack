@@ -10,10 +10,10 @@
         "config": {
           "falco": {
             "readinessProbe": {
-              "initialDelaySeconds": 180
+              "initialDelaySeconds": 1800
             },
             "livenessProbe": {
-              "initialDelaySeconds": 180
+              "initialDelaySeconds": 180123
             }
           },
           "resources": {
