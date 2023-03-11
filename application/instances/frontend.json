@@ -18,18 +18,18 @@
       "strategy": "RollingUpdate",
       "build": {
         "artifactory": "default",
-        "name": "backend-1234"
+        "name": "frontend"
       }
     },
     "runtime": {
       "size": {
-        "value": "large",
+        "value": "small",
         "namespace": "GP"
       },
       "autoscaling": {
         "cpuThreshold": "50",
-        "max": 7,
-        "min": 9
+        "max": 6,
+        "min": 2
       },
       "ports": [
         {
