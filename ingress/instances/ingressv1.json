@@ -1,0 +1,6 @@
+{
+  "base_domain" : "console.facets.cloud",
+  "subdomains": ["dummy"],
+  "waf_enabled" : true,
+  "disabled": true
+}
