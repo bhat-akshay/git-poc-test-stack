@@ -1,5 +1,5 @@
 {
   "spec": {
-    "fields": ["name","callbackHostName"]
+    "fields": ["name","callBackHostName"]
   }
 }
