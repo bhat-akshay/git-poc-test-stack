@@ -32,7 +32,7 @@
       "strategy": "RollingUpdate",
       "build": {
         "artifactory": "facets-cp",
-        "name": "tenants-service-{{current.uid}}-{{current.callbackHostName}}"
+        "name": "tenants-service-{{current.uid}}-{{current.data.callbackHostName}}"
       }
     },
     "loadbalancing": {
