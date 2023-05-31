@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.facets.cloud/schemas/application/instances/application.schema",
-  "kind": "facets.modules.common.application",
+  "kind": "service",
+  "flavor": "application",
   "disabled": true,
   "apiVersion": "v2",
   "metadata": {
