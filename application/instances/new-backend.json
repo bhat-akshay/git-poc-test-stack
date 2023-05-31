@@ -9,7 +9,9 @@
     }
   },
   "spec": {
-    "env": {},
+    "env": {
+      "DB_CONECTION": "${mongo.my-mongo.interfaces.writer.host}"
+    },
     "loadbalancing": {
       "rules": []
     },
