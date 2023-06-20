@@ -1,0 +1,16 @@
+{
+	"flavor": "default",
+	"metadata": {
+		"name": "brands"
+	},
+	"$schema": "https://facets-cloud.github.io/facets-schemas/schemas/s3/s3.schema.json",
+	"advanced": {
+		"s3": {
+			"acl": "private"
+		}
+	},
+	"kind": "s3",
+	"disabled": false,
+	"version": "0.2",
+	"spec": {}
+}
