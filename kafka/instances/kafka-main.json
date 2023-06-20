@@ -1,25 +1,10 @@
-{
+{   "kind": "kafka",
 	"flavor": "k8s",
 	"lifecycle": "ENVIRONMENT",
 	"metadata": {
-		"name": "kafka-main"
+		"name": "<kafka-name>"
 	},
 	"depends_on": [],
-	"advanced": {
-		"k8s": {
-			"kafka": {
-				"values": {
-					"extraEnvVars": [
-						{
-							"name": "KAFKA_CFG_MAX_POLL_RECORDS",
-							"value": "10"
-						}
-					]
-				}
-			}
-		}
-	},
-	"kind": "kafka",
 	"provided": false,
 	"disabled": false,
 	"version": "latest",

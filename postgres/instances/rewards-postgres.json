@@ -1,43 +1,26 @@
 {
-	"flavor": "cloudsql_postgres",
+	"$schema": "https://facets-cloud.github.io/facets-schemas/schemas/postgres/postgres.schema.json",
+	"provided": false,
+	"kind" : "postgres",
+	"version": "0.1",
+	"depends_on": [],
+	"disabled": false,
+	"lifecycle": "ENVIRONMENT_BOOTSTRAP",
 	"metadata": {
-		"name": "accounts-gamex-pg",
-		"tags": {
-			"service": "accounts-gamex",
-			"svcdb": "postgres",
-			"dbflavor": "cloudsql"
-		}
+	  "name": "daw"
 	},
-	"apiVersion": "v1",
-	"$schema": "https://docs.facets.cloud/schemas/postgres/instances/sample.schema",
-	"advanced": {
-		"cloudsql": {
-			"database_flags": [
-				{
-					"name": "max_connections",
-					"value": "5000"
-				}
-			]
-		}
-	},
-	"kind": "facets.modules.common.postgres",
+	"flavor": "aurora",
 	"spec": {
-		"name": "accounts-gamex-pg",
-		"component_version": "12.8",
-		"databases": {
-			"accounts_gamex": {
-				"schema": []
-			}
+	  "postgres_version": "12.11",
+	  "size": {
+		"writer": {
+		  "instance": "db.t3.medium",
+		  "instance_count": 1
 		},
-		"reader_count": 1,
-		"reader_service_names": [
-			"accounts-gamex-pg-reader"
-		],
-		"reader_size": "db-g1-small",
-		"writer_count": 1,
-		"writer_service_names": [
-			"accounts-gamex-pg-writer"
-		],
-		"writer_size": "db-g1-small"
+		"reader": {
+		  "instance": "db.t3.medium",
+		  "instance_count": 1
+		}
+	  }
 	}
-}
+  }
