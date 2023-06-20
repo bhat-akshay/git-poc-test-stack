@@ -1,0 +1,43 @@
+{
+	"flavor": "cloudsql_postgres",
+	"metadata": {
+		"name": "accounts-gamex-pg",
+		"tags": {
+			"service": "accounts-gamex",
+			"svcdb": "postgres",
+			"dbflavor": "cloudsql"
+		}
+	},
+	"apiVersion": "v1",
+	"$schema": "https://docs.facets.cloud/schemas/postgres/instances/sample.schema",
+	"advanced": {
+		"cloudsql": {
+			"database_flags": [
+				{
+					"name": "max_connections",
+					"value": "5000"
+				}
+			]
+		}
+	},
+	"kind": "facets.modules.common.postgres",
+	"spec": {
+		"name": "accounts-gamex-pg",
+		"component_version": "12.8",
+		"databases": {
+			"accounts_gamex": {
+				"schema": []
+			}
+		},
+		"reader_count": 1,
+		"reader_service_names": [
+			"accounts-gamex-pg-reader"
+		],
+		"reader_size": "db-g1-small",
+		"writer_count": 1,
+		"writer_service_names": [
+			"accounts-gamex-pg-writer"
+		],
+		"writer_size": "db-g1-small"
+	}
+}
