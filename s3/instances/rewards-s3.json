@@ -2,7 +2,7 @@
 	"$schema": "https://facets-cloud.github.io/facets-schemas/schemas/s3/s3.schema.json",
 	"flavor": "default",
 	"metadata": {
-		"name": "brands"
+		"name": "<s3-name>"
 	},
 	"kind": "s3",
 	"disabled": false,
