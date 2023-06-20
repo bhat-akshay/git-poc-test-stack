@@ -1,0 +1,62 @@
+{
+	"$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
+	"flavor": "default",
+	"metadata": {},
+	"advanced": {
+		"common": {
+			"include_common_env_variables": true
+		},
+		"aws": {
+			"iam": {
+				"dashboard_s3_access": {
+					"arn": "${s3.dashboard.out.iam_policies.READ_WRITE}"
+				}
+			}
+		}
+	},
+	"kind": "service",
+	"disabled": false,
+	"version": "0.1",
+	"spec": {
+		"type": "application",
+		"enable_host_anti_affinity": false,
+		"release": {
+			"strategy": {
+				"type": "RollingUpdate"
+			},
+			"build": {
+				"artifactory": "<artifactory>",
+				"name": "<artifact-name>"
+			}
+		},
+		"runtime": {
+			"health_checks": {
+				"start_up_time": 15,
+				"timeout": 10,
+				"period": 30,
+				"port": "<health-check-port>"
+			},
+			"autoscaling": {
+				"min": 1,
+				"max": 1,
+				"cpu_threshold": 50
+			},
+			"ports": {
+				"http": {
+					"port": "<port>",
+					"protocol": "tcp"
+				}
+			},
+			"size": {
+				"cpu": "500m",
+				"cpu_limit": "1000m",
+				"memory": "2000Mi"
+			}
+		},
+		"env": {
+			"SPRING_PROFILES_ACTIVE": "${blueprint.self.variables.env}",
+			"S3_BUCKET_NAME": "${s3.dashboard.out.bucket_name}"
+		},
+		"restart_policy": "OnFailure"
+	}
+}
