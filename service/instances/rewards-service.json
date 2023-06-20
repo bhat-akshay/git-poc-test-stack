@@ -1,0 +1,86 @@
+{
+	"flavor": "default",
+	"metadata": {},
+	"$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
+	"advanced": {
+		"common": {
+			"include_common_env_variables": true
+		},
+		"aws": {
+			"iam": {
+				"dashboard_s3_access": {
+					"arn": "${s3.dashboard.out.iam_policies.READ_WRITE}"
+				}
+			}
+		}
+	},
+	"kind": "service",
+	"disabled": false,
+	"version": "0.1",
+	"spec": {
+		"type": "application",
+		"enable_host_anti_affinity": false,
+		"release": {
+			"strategy": {
+				"type": "RollingUpdate"
+			},
+			"build": {
+				"artifactory": "default",
+				"name": "dashboard_RS"
+			}
+		},
+		"runtime": {
+			"health_checks": {
+				"start_up_time": 15,
+				"timeout": 10,
+				"period": 30,
+				"port": "8080"
+			},
+			"autoscaling": {
+				"min": 1,
+				"max": 1,
+				"cpu_threshold": 50
+			},
+			"ports": {
+				"http": {
+					"port": "8080",
+					"protocol": "tcp"
+				}
+			},
+			"size": {
+				"cpu": "500m",
+				"cpu_limit": "1000m",
+				"memory": "2000Mi"
+			}
+		},
+		"env": {
+			"SPRING_PROFILES_ACTIVE": "${blueprint.self.variables.env}",
+			"BSS_ENDPOINT": "http://${service.bss.out.interfaces.http.host}/rest",
+			"SNOWFLAKE_HOST": "${blueprint.self.variables.SNOWFLAKE_HOST}",
+			"REDIS_HOST": "${redis.dashboard.out.interfaces.writer.host}",
+			"REDIS_PORT": "${redis.dashboard.out.interfaces.writer.port}",
+			"ds_rds_env_password": "${mysql.dashboard-service-rds.out.interfaces.writer.password}",
+			"ds_rds_env_user": "${mysql.dashboard-service-rds.out.interfaces.writer.username}",
+			"S3_BUCKET_NAME": "${s3.dashboard.out.bucket_name}",
+			"NEW_RELIC_INGEST_KEY": "${blueprint.self.secrets.NEW_RELIC_KEY}",
+			"DATASOURCE_SERVER": "${mysql.dashboard-service-rds.out.interfaces.writer.host}",
+			"DATASOURCE_PORT": "${mysql.dashboard-service-rds.out.interfaces.writer.port}",
+			"DATASOURCE_USER": "${mysql.dashboard-service-rds.out.interfaces.writer.username}",
+			"CONFIG_SERVICE_SERVER": "http://${service.dashboard-config-service.out.interfaces.http.host}",
+			"BRANDS_SERVICE": "http://${service.brands-service.out.interfaces.http.host}:${service.brands-service.out.interfaces.http.port}",
+			"CONFIG_SERVICE_PORT": "http://${service.dashboard-config-service.out.interfaces.http.port}",
+			"BRANDS_SERVICE_SERVER": "http://${service.brands-service.out.interfaces.http.host}",
+			"BRANDS_SERVICE_PORT": "${service.brands-service.out.interfaces.http.port}",
+			"TOOLING_SERVICE_SERVER": "http://${service.dashboard-tooling-service.out.interfaces.http.host}:${service.dashboard-tooling-service.out.interfaces.http.port}",
+			"SUBSCRIPTION_SERVICE_ENDPOINT": "http://${service.subscription-service.out.interfaces.http.host}:${service.subscription-service.out.interfaces.http.port}",
+			"TOOLING_SERVICE_HEADER_API": "http://${service.dashboard-tooling-service.out.interfaces.http.host}:${service.dashboard-tooling-service.out.interfaces.http.port}/metric/labels",
+			"ORCHESTRATOR_SERVICE_SERVER": "http://budget-tracker-orchestrator-beta.rboomerang.com",
+			"DMSCONTROLLER_ENDPOINT": "http://beta.dms.commerceiq.ai/",
+			"DMSCONTROLLER_PROD_ENDPOINT": "http://dms.commerceiq.ai/",
+			"DMSCONTROLLER_BETA_ENDPOINT": "http://beta.dms.commerceiq.ai/",
+			"NANDI_ENDPOINT": "https://nandi.beta.commerceiq.ai/secret/",
+			"QUEUE_MANAGER_URL": "http://${service.queue-manager-service.out.interfaces.http.host}:${service.queue-manager-service.out.interfaces.http.port}/"
+		},
+		"restart_policy": "OnFailure"
+	}
+}
