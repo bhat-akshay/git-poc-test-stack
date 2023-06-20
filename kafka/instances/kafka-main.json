@@ -1,0 +1,45 @@
+{
+	"flavor": "k8s",
+	"lifecycle": "ENVIRONMENT",
+	"metadata": {
+		"name": "kafka-main"
+	},
+	"depends_on": [],
+	"advanced": {
+		"k8s": {
+			"kafka": {
+				"values": {
+					"extraEnvVars": [
+						{
+							"name": "KAFKA_CFG_MAX_POLL_RECORDS",
+							"value": "10"
+						}
+					]
+				}
+			}
+		}
+	},
+	"kind": "kafka",
+	"provided": false,
+	"disabled": false,
+	"version": "latest",
+	"spec": {
+		"authenticated": false,
+		"kafka_version": "2.8.0",
+		"persistence_enabled": true,
+		"size": {
+			"zookeeper": {
+				"cpu": "1",
+				"memory": "1G",
+				"replica_count": 1,
+				"volume": "10Gi"
+			},
+			"kafka": {
+				"cpu": "1",
+				"memory": "1G",
+				"replica_count": 1,
+				"volume": "10Gi"
+			}
+		}
+	}
+}
