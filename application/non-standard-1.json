@@ -3,6 +3,7 @@
   "flavor": "default",
   "metadata": {
     "labels": {
+      "name": "value"
     }
   },
   "kind": "service",
@@ -44,8 +45,7 @@
         "port": 8080,
         "start_up_time": 15
       },
-      "volumes": {
-      }
+      "volumes": {}
     },
     "env": {
       "LOG_LEVEL": "INFO"
