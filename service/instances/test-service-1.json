@@ -10,7 +10,10 @@
     "type": "application",
     "enable_host_anti_affinity": true,
     "release": {
-      "image": "",
+      "build":{
+      	"artifactory": "facets-config-auto",
+				"name": "test-service"
+      }
       "strategy": {
         "type": "Recreate"
       }
