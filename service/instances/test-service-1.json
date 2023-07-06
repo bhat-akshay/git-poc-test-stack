@@ -12,8 +12,8 @@
     "release": {
       "build":{
       	"artifactory": "facets-config-auto",
-				"name": "test-service"
-      }
+	"name": "test-service"
+      },
       "strategy": {
         "type": "Recreate"
       }
