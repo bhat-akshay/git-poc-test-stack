@@ -3,6 +3,6 @@
 
   "small": {
     "podCPULimit": 1,
-    "podMemoryLimit": 2
+    "podMemoryLimit": 4
   }
 }
