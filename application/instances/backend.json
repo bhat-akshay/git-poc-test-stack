@@ -1,1 +1,9 @@
-{}
+{
+  "kind":"service",
+  "falvour":"aws",
+  "spec":{
+    "env":{
+      "TEST" : "twets"
+    }
+  }
+}
