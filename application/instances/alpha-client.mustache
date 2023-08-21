@@ -1,0 +1,60 @@
+{
+  "kind": "service",
+  "apiVersion": "v2",
+  "metadata": {
+    "labels": {
+      "sidecar.istio.io/inject": "true"
+    }
+  },
+  "spec": {
+    "runtime": {
+      "ports": [
+        {
+          "name": "main",
+          "port": 3200
+        }
+      ],
+      "healthCheck": {
+        "portName": "main"
+      },
+      "size": {
+        "namespace": "GENERAL_PURPOSE",
+        "value": "MICRO"
+      }
+    },
+    "release": {
+      "strategy": "RollingUpdate",
+      "build": {
+        "artifactory": "facets-cp",
+        "name": "control-plane-ui"
+      }
+    },
+    "loadbalancing": {
+      "rules": [
+          {{#customers}}
+        {
+          "ingress": "control",
+          "path": "/",
+          "portName": "main",
+          "domainPrefix": "{{uid}}",
+          "ingress_annotations": {
+              "nginx.ingress.kubernetes.io/use-regex": "true",
+              "nginx.ingress.kubernetes.io/force-ssl-redirect": "true"
+          },
+          "regex": ".*$"
+        },
+        {{/customers}}
+        {
+          "ingress": "control",
+          "path": "/",
+          "portName": "main",
+          "ingress_annotations": {
+             "nginx.ingress.kubernetes.io/use-regex": "true",
+             "nginx.ingress.kubernetes.io/force-ssl-redirect": "true"
+          },
+          "regex": ".*$"
+         }
+      ]
+    }
+  }
+}
