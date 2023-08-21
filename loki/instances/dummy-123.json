@@ -1,5 +1,7 @@
 {
   "test": {
-    "dummy": false
+    "dummy": false,
+    "spec":{
+      "type":"application"
   }
 }
