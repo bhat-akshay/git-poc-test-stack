@@ -1,0 +1,50 @@
+{
+  "kind": "service",
+  "apiVersion": "v12",
+  "disabled": "false",
+  "templatedOn": "customers",
+  "metadata": {
+  },
+  "spec": {
+    "type":"application",
+    "runtime": {
+      "ports": [
+        {
+          "name": "main",
+          "port": 8081
+        }
+      ],
+      "healthCheck": {
+        "readinessUrl": "/isAlive",
+        "livenessUrl": "/isAlive",
+        "startupTime": 52,
+        "timeout": 20,
+        "period": 30,
+        "portName": "main"
+      },
+      "size": {
+        "namespace": "GENERAL_PURPOSE",
+        "value": "TINY"
+      }
+    },
+    "env": {
+    },
+    "release": {
+      "strategy": "RollingUpdate",
+      "build": {
+        "artifactory": "facets-cp",
+        "name": "tenants-service-{{current.uid}}-{{current.data.callbackHostName}}"
+      }
+    },
+    "loadbalancing": {
+      "rules": [
+        {
+          "ingress": "control",
+          "path": "/v1/",
+          "portName": "main",
+          "domainPrefix": "accounts"
+        }
+      ]
+    }
+  }
+}
