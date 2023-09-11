@@ -10,6 +10,6 @@
 
  },
  "componentVersions": {
-  "KUBERNETES": "1.21"
+  "KUBERNETES": "1.25"
  }
 }
