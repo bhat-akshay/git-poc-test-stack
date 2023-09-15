@@ -1,4 +1,5 @@
 {
   "test": true,
-  "disabled": true
+  "disabled": true,
+  "alpha": true
 }
