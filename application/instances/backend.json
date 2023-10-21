@@ -1,3 +1,4 @@
 {
-  "test":"${this.that.here}",
+  "test": "${this.that.here}",
+  "test1": false
 }
