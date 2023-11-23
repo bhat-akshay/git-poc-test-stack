@@ -17,7 +17,7 @@
       },
       "build": {
         "artifactory": "default",
-        "name": "replace-with-app-name"
+        "name": "dummy"
       }
     },
     "runtime": {
