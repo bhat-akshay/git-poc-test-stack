@@ -10,7 +10,7 @@
   "version": "0.1",
   "spec": {
     "enable_host_anti_affinity": false,
-    "type": "application",
+    "type": "statefulset",
     "release": {
       "strategy": {
         "type": "RollingUpdate"
