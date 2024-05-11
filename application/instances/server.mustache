@@ -3,13 +3,12 @@
   "apiVersion": "v2",
   "disabled": "false",
   "templatedOn": "customers",
-  "metadata": {
-  },
+  "metadata": {},
   "spec": {
     "runtime": {
       "ports": [
         {
-          "name": "main",
+          "name": "main-a",
           "port": 8081
         }
       ],
@@ -26,8 +25,7 @@
         "value": "TINY"
       }
     },
-    "env": {
-    },
+    "env": {},
     "release": {
       "strategy": "RollingUpdate",
       "build": {
