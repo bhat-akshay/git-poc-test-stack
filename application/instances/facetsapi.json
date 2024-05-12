@@ -11,7 +11,7 @@
     "loadbalancing": {
       "rules": [
         {
-          "ingress": "ingressv1",
+          "ingress": "ingressv12",
           "path": "/",
           "portName": "http",
           "domainPrefix": "fp1"
