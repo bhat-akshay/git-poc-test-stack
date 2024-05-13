@@ -1,6 +1,6 @@
 {
   "metadata": {},
-  "apiVersion": "v2",
+  "apiVersion": "v3",
   "kind": "service",
   "flavor": "application",
   "disabled": true,
