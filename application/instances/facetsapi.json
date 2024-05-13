@@ -2,7 +2,7 @@
   "metadata": {},
   "apiVersion": "v2",
   "kind": "service",
-  "flavor": "application",
+  "flavor": "k8s",
   "disabled": true,
   "spec": {
     "env": {
