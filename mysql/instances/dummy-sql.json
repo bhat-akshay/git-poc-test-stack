@@ -1,0 +1,28 @@
+{
+  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/mysql/mysql.schema.json",
+  "flavor": "k8s",
+  "kind": "mysql",
+  "metadata": {},
+  "version": "0.1",
+  "disabled": true,
+  "spec": {
+    "mysql_version": "8.0.34",
+    "size": {
+      "writer": {
+        "cpu": 1,
+        "memory": "1Gi",
+        "cpu_limit": 1,
+        "memory_limit": "1Gi",
+        "volume": "8G"
+      },
+      "reader": {
+        "cpu": "200m",
+        "memory": "800Mi",
+        "cpu_limit": "200m",
+        "memory_limit": "800Mi",
+        "volume": "8G",
+        "instance_count": 0
+      }
+    }
+  }
+}
