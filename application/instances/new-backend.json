@@ -1,12 +1,12 @@
 {
-  "$schema": "https://docs.facets.cloud/schemas/application/instances/application.schema",
   "kind": "service",
   "flavor": "application",
   "disabled": true,
   "apiVersion": "v3",
   "metadata": {
     "labels": {
-      "sidecar.istio.io/inject": "true"
+      "sidecar.istio.io/inject": "true",
+      "deliveryType": "DEFAULT"
     }
   },
   "spec": {
@@ -22,7 +22,8 @@
       "build": {
         "artifactory": "default",
         "name": "backend-1234"
-      }
+      },
+      "image": "${blueprint.self.artifacts.git-poc-new-backend}"
     },
     "runtime": {
       "size": {
