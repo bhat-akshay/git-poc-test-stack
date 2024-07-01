@@ -6,7 +6,7 @@
   "metadata": {
     "labels": {
       "sidecar.istio.io/inject": "true",
-      "deliveryType": "DEFAULT"
+      "deliveryType": "MANUAL"
     }
   },
   "spec": {
