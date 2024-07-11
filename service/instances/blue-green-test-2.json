@@ -1,53 +1,152 @@
 {
-  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
-  "flavor": "k8s",
+  "flavor": "default",
   "metadata": {
+    "name": "blue-green-test-2",
     "labels": {
-      "deliveryType": "MANUAL"
+      "sidecar.istio.io/inject": "true"
+    }
+  },
+  "advanced": {
+    "common": {
+      "app_chart": {
+        "values": {
+          "additional_k8s_objects": {
+            "destination_rule": {
+              "apiVersion": "networking.istio.io/v1alpha3",
+              "kind": "DestinationRule",
+              "metadata": {
+                "name": "bg-destination"
+              },
+              "spec": {
+                "host": "blue-green-test-2",
+                "subsets": [
+                  {
+                    "name": "canary",
+                    "labels": {
+                      "app": "blue-green-test-2"
+                    }
+                  },
+                  {
+                    "name": "stable",
+                    "labels": {
+                      "app": "blue-green-test-2"
+                    }
+                  }
+                ]
+              }
+            },
+            "virtual_service": {
+              "apiVersion": "networking.istio.io/v1alpha3",
+              "kind": "VirtualService",
+              "metadata": {
+                "name": "virtualservice-canary"
+              },
+              "spec": {
+                "hosts": [
+                  "bgt.tools-infra-dev-gcp-infra-dev.infra.facetsdev.click",
+                  "blue-green-test-2.default.svc.cluster.local"
+                ],
+                "http": [
+                  {
+                    "name": "primary",
+                    "route": [
+                      {
+                        "destination": {
+                          "host": "blue-green-test-2",
+                          "subset": "stable"
+                        },
+                        "weight": 90
+                      },
+                      {
+                        "destination": {
+                          "host": "blue-green-test-2",
+                          "subset": "canary"
+                        },
+                        "weight": 10
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "kind": "service",
-  "disabled": true,
+  "disabled": false,
   "version": "0.1",
   "spec": {
-    "enable_host_anti_affinity": false,
     "type": "application",
-    "restart_policy": "Always",
+    "enable_host_anti_affinity": false,
+    "restart_policy": "OnFailure",
     "release": {
+      "image": "hashicorp/http-echo:latest",
       "strategy": {
-        "type": "RollingUpdate"
+        "type": "Canary",
+        "canary_strategy": {
+          "enable_service": false,
+          "steps": [
+            {
+              "setWeight": 10
+            },
+            {
+              "pause": {}
+            }
+          ],
+          "traffic_routing": {
+            "istio": {
+              "destinationRule": {
+                "name": "bg-destination",
+                "canarySubsetName": "canary",
+                "stableSubsetName": "stable"
+              },
+              "virtualService": {
+                "name": "virtualservice-canary",
+                "routes": [
+                  "primary"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "build": {
+        "artifactory": "facets-config-auto",
+        "name": "bluegreen"
       }
     },
     "runtime": {
-      "autoscaling": {
-        "scaling_on": "CPU",
-        "min": "1",
-        "max": "1",
-        "cpu_threshold": "50"
-      },
-      "ports": {},
       "size": {
-        "cpu": "300m",
-        "memory": "1Gi",
-        "cpu_limit": "1000m",
-        "memory_limit": "5Gi"
+        "cpu": "10m",
+        "memory": "50Mi"
       },
       "health_checks": {
-        "readiness_check_type": "PortCheck",
-        "readiness_timeout": "10",
-        "readiness_period": "30",
-        "readiness_port": "8080",
-        "readiness_start_up_time": "15",
-        "liveness_check_type": "PortCheck",
-        "liveness_timeout": "10",
-        "liveness_period": "30",
-        "liveness_port": "8080",
-        "liveness_start_up_time": "15"
+        "period": 10,
+        "port": "5678",
+        "timeout": 60,
+        "start_up_time": 10
       },
-      "volumes": {}
+      "autoscaling": {
+        "cpu_threshold": 50,
+        "max": 10,
+        "min": 5
+      },
+      "ports": {
+        "http": {
+          "protocol": "tcp",
+          "port": "5678",
+          "test": 1,
+          "test2": 2
+        }
+      },
+      "args": [
+        "-text=hello-world-v2"
+      ]
     },
     "env": {
-      "LOG_LEVEL": "INFO"
+      "log": "asdarrrd"
     }
   }
 }
