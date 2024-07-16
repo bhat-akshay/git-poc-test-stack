@@ -84,7 +84,7 @@
     "release": {
       "image": "hashicorp/http-echo:latest",
       "strategy": {
-        "type": "Canary",
+        "type": "BlueGreen",
         "canary_strategy": {
           "enable_service": false,
           "steps": [
