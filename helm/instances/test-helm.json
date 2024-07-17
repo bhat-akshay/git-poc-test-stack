@@ -1,0 +1,24 @@
+{
+  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/helm/helm.schema.json",
+  "kind": "helm",
+  "flavor": "k8s",
+  "disabled": true,
+  "metadata": {},
+  "version": "0.1",
+  "spec": {
+    "helm": {
+      "repository": "https://helm.datadoghq.com",
+      "chart": "datadog",
+      "namespace": "datadog",
+      "wait": false
+    },
+    "values": {
+      "datadog": {
+        "podLabelsAsTags": {
+          "managed_by": "facets",
+          "env": "dev"
+        }
+      }
+    }
+  }
+}
