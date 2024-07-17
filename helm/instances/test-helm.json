@@ -1,11 +1,11 @@
 {
-  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/helm/helm.schema.json",
   "kind": "helm",
   "flavor": "k8s",
   "disabled": true,
   "metadata": {},
   "version": "0.1",
   "spec": {
+    "zip_path": "{self.blueprint.artifacts.test}",
     "helm": {
       "repository": "https://helm.datadoghq.com",
       "chart": "datadog",
