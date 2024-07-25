@@ -28,7 +28,7 @@
     "release": {
       "strategy": "RollingUpdate",
       "build": {
-        "image": "${blueprint.self.artifacts.facetsapi}"
+        "image": "${blueprint.self.artifacts.poc-facetsapi}"
       }
     },
     "runtime": {
