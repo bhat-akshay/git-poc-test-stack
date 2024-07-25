@@ -28,7 +28,7 @@
     "release": {
       "strategy": "RollingUpdate",
       "build": {
-        "image": "vishnukvfacets/facets-testing-api:latest"
+        "image": "${blueprint.self.artifacts.facetsapi}"
       }
     },
     "runtime": {
