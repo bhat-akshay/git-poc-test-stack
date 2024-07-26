@@ -1,5 +1,9 @@
 {
-  "metadata": {},
+  "metadata": {
+    "labels": {
+      "deliveryType": "OWN"
+    }
+  },
   "apiVersion": "v2",
   "kind": "service",
   "flavor": "k8s",
