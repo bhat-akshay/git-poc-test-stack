@@ -5,7 +5,7 @@
   "metadata": {},
   "version": "0.1",
   "spec": {
-    "zip_path": "{self.blueprint.artifacts.test}",
+    "zip_path": "{blueprint.self.artifacts.test}",
     "helm": {
       "repository": "https://helm.datadoghq.com",
       "chart": "datadog",
