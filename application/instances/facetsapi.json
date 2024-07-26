@@ -1,7 +1,7 @@
 {
   "metadata": {
     "labels": {
-      "deliveryType": "OWN"
+      "deliveryType": "MANUAL"
     }
   },
   "apiVersion": "v2",
