@@ -16,7 +16,7 @@
       },
       "build": {
         "artifactory": "default",
-        "name": "test-123"
+        "name": "test-1234"
       }
     },
     "runtime": {
