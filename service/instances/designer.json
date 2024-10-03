@@ -2,7 +2,9 @@
   "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
   "flavor": "default",
   "metadata": {
-    "labels": {}
+    "labels": {
+	"name":"test"
+	}
   },
   "kind": "service",
   "disabled": false,
