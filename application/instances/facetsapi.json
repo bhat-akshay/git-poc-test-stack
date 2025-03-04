@@ -21,7 +21,7 @@
           "domainPrefix": "fp1"
         },
         {
-          "ingress": "ingressv1",
+          "ingress": "ingressv11",
           "path": "/time",
           "portName": "http",
           "domainPrefix": "time"
