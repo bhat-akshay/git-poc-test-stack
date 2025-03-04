@@ -2,7 +2,7 @@
   "flavor": "elasticache",
   "lifecycle": "ENVIRONMENT",
   "metadata": {
-    "name": "something",
+    "name": "somethingas",
     "tags": {
       "name": "something-new-3"
     }
@@ -14,7 +14,7 @@
   "kind": "redis",
   "provided": false,
   "disabled": true,
-  "version": "0.2",
+  "version": "0.1",
   "spec": {
     "authenticated": false,
     "redis_version": "6.x",
