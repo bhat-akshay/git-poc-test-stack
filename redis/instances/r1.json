@@ -2,9 +2,9 @@
   "flavor": "elasticache",
   "lifecycle": "ENVIRONMENT",
   "metadata": {
-    "name": "somethingas",
+    "name": "something",
     "tags": {
-      "name": "something-new-3"
+      "name": "something-new-3a"
     }
   },
   "depends_on": [],
