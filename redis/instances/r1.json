@@ -14,7 +14,7 @@
   "kind": "redis",
   "provided": false,
   "disabled": true,
-  "version": "0.1",
+  "version": "0.2",
   "spec": {
     "authenticated": false,
     "redis_version": "6.x",
