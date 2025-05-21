@@ -21,9 +21,8 @@
       "strategy": "RollingUpdate",
       "build": {
         "artifactory": "default",
-        "name": "backend-1234"
-      },
-      "image": "${blueprint.self.artifacts.git-poc-new-backend}"
+        "name": "backend-new"
+      }
     },
     "runtime": {
       "size": {
