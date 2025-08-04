@@ -1,5 +1,4 @@
 {
-  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/elasticsearch/elasticsearch.schema.json",
   "version": "0.2",
   "flavor": "k8s",
   "kind": "elasticsearch",
@@ -11,7 +10,8 @@
         "cpu": "2001m",
         "memory": "2Gi",
         "volume": "8Gi",
-        "replica_count": 1
+        "replica_count": 1,
+        "instance_count": 1
       },
       "client": {
         "cpu": "2001m",
@@ -21,5 +21,6 @@
       }
     }
   },
-  "disabled": true
+  "disabled": true,
+  "uiProps": {}
 }
