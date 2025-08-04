@@ -2,7 +2,9 @@
   "version": "0.2",
   "flavor": "k8s",
   "kind": "elasticsearch",
-  "metadata": {},
+  "metadata": {
+    "namespace": "default"
+  },
   "spec": {
     "elasticsearch_version": "8.5.1",
     "size": {
@@ -11,7 +13,8 @@
         "memory": "2Gi",
         "volume": "8Gi",
         "replica_count": 1,
-        "instance_count": 1
+        "instance_count": 1,
+        "cpu_limit": "123"
       },
       "client": {
         "cpu": "2001m",
