@@ -21,7 +21,7 @@
       "strategy": "RollingUpdate",
       "build": {
         "artifactory": "default",
-        "name": "facetsapi"
+        "name": "facetsapi-121"
       }
     },
     "runtime": {
