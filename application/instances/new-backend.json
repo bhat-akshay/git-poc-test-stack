@@ -30,7 +30,7 @@
         "namespace": "GP"
       },
       "autoscaling": {
-        "cpuThreshold": "01",
+        "cpuThreshold": "011",
         "max": 54,
         "min": 9
       },
