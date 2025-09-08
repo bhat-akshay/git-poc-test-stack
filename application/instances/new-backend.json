@@ -31,7 +31,7 @@
       },
       "autoscaling": {
         "cpuThreshold": "50",
-        "max": 5,
+        "max": 54,
         "min": 9
       },
       "ports": [
