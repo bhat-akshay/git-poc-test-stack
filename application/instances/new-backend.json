@@ -20,7 +20,7 @@
     "release": {
       "strategy": "RollingUpdate",
       "build": {
-        "artifactory": "default-1",
+        "artifactory": "default",
         "name": "backend-new"
       }
     },
