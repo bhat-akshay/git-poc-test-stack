@@ -21,7 +21,7 @@
       "strategy": "RollingUpdate",
       "build": {
         "artifactory": "facets",
-        "name": "new-backend"
+        "name": "git-poc-new-backend"
       }
     },
     "runtime": {
