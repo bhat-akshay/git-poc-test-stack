@@ -20,7 +20,7 @@
     "release": {
       "strategy": "RollingUpdate",
       "build": {
-        "artifactory": "gar-1",
+        "artifactory": "gar-2",
         "name": "facetsapi"
       }
     },
