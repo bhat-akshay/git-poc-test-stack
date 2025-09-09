@@ -1,7 +1,7 @@
 {
   "kind": "service",
   "flavor": "application",
-  "disabled": true,
+  "disabled": false,
   "apiVersion": "v3",
   "metadata": {
     "labels": {
