@@ -20,8 +20,8 @@
     "release": {
       "strategy": "RollingUpdate",
       "build": {
-        "artifactory": "facets",
-        "name": "git-poc-new-backend"
+        "artifactory": "default",
+        "name": "facetsapi"
       }
     },
     "runtime": {
