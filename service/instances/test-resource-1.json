@@ -31,7 +31,7 @@
       "command": [],
       "ports": {},
       "size": {
-        "cpu": "200m",
+        "cpu": "100m",
         "cpu_limit": "1000m",
         "memory": "1Gi",
         "memory_limit": "5Gi"
