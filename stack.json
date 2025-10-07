@@ -11,6 +11,12 @@
       "secret": true,
       "value": "dummy",
       "global": false
+    },
+    "github": {
+      "secret": true,
+      "value": "",
+      "global": false,
+      "description": ""
     }
   },
   "componentVersions": {
