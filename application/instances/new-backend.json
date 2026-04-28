@@ -18,7 +18,7 @@
   "spec": {
     "env": {
       "DB_CONECTION": "${mongo.my-mongo.interfaces.writer.host}",
-      "DB_CONECTION1": "${mongo.test-resource.interfaces.writer.host}"
+      "DB_CONECTION1": "${config_map.map-1.interfaces.writer.host}"
     },
     "loadbalancing": {
       "rules": []
