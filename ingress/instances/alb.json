@@ -1,3 +1,12 @@
 {
-  "disabled": "false"
+  "disabled": false,
+  "flavor": "",
+  "version": "",
+  "spec": {
+    "rules": {
+      "abc": {
+        "service": "service.new-backend.out.interfaces.name"
+      }
+    }
+  }
 }
