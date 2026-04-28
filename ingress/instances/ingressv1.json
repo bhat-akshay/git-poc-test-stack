@@ -5,8 +5,9 @@
   ],
   "waf_enabled": true,
   "disabled": false,
-  "flavor": "",
+  "flavor": "nginx_k8s_native",
   "version": "",
+  "kind": "ingress",
   "rules": {
     "asdac": {
       "service": "${service.new-backend.out.interfaces.host}"
