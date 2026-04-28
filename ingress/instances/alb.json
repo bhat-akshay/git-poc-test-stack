@@ -5,7 +5,8 @@
   "spec": {
     "rules": {
       "abc": {
-        "service": "${service.new-backend.out.interfaces.name}"
+        "service": "${service.new-backend.out.interfaces.name}",
+        "bac": "${service.new-backend.out.interfaces.KEY.host}"
       }
     }
   }
