@@ -1,6 +1,15 @@
 {
-  "base_domain" : "console.facets.cloud",
-  "subdomains": ["dummy"],
-  "waf_enabled" : true,
-  "disabled": true
+  "base_domain": "console.facets.cloud",
+  "subdomains": [
+    "dummy"
+  ],
+  "waf_enabled": true,
+  "disabled": false,
+  "flavor": "",
+  "version": "",
+  "rules": {
+    "asdac": {
+      "service": "${service.new-backend.out.interfaces.host}"
+    }
+  }
 }
