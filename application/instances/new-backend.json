@@ -3,6 +3,12 @@
   "flavor": "application",
   "disabled": false,
   "apiVersion": "v3",
+  "inputs": {
+    "bac": {
+      "resource_type": "config_map",
+      "resource_name": "map-1"
+    }
+  },
   "metadata": {
     "labels": {
       "sidecar.istio.io/inject": "true",
