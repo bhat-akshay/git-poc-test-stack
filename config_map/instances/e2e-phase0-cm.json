@@ -1,0 +1,14 @@
+{
+  "disabled": true,
+  "flavor": "k8s",
+  "kind": "config_map",
+  "metadata": {
+    "name": "e2e-phase0-cm"
+  },
+  "spec": {
+    "data": {
+      "rev": "v1"
+    }
+  },
+  "version": "0.1"
+}
