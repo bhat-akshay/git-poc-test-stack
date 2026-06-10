@@ -1,53 +1,59 @@
 {
-  "kind": "service",
-  "flavor": "application",
   "disabled": false,
-  "apiVersion": "v3",
-  "inputs": {
-    "bac": {
-      "resource_type": "config_map",
-      "resource_name": "map-1"
-    }
-  },
+  "flavor": "default",
+  "kind": "service",
   "metadata": {
     "labels": {
-      "sidecar.istio.io/inject": "true",
-      "deliveryType": "MANUAL"
-    }
+      "deliveryType": "MANUAL",
+      "sidecar.istio.io/inject": "true"
+    },
+    "name": "new-backend"
   },
   "spec": {
-    "env": {
-      "DB_CONECTION": "${mongo.my-mongo.interfaces.writer.host}",
-      "DB_CONECTION1": "${config_map.map-1.interfaces.writer.host}"
-    },
-    "loadbalancing": {
-      "rules": []
-    },
-    "permission": [],
+    "enable_host_anti_affinity": false,
+    "env": {},
     "release": {
-      "strategy": "RollingUpdate",
       "build": {
         "artifactory": "gar-2",
         "name": "facetsapi"
+      },
+      "strategy": {
+        "type": "RollingUpdate"
       }
     },
+    "restart_policy": "Always",
     "runtime": {
-      "size": {
-        "value": "large",
-        "namespace": "GP"
-      },
       "autoscaling": {
-        "cpuThreshold": "011",
-        "max": 54,
-        "min": 9
+        "cpu_threshold": "50",
+        "max": 3,
+        "min": 1
       },
-      "ports": [
-        {
-          "name": "port8080",
-          "port": 80
+      "health_checks": {
+        "liveness_check_type": "None",
+        "liveness_exec_command": [],
+        "liveness_port": "",
+        "liveness_url": "/",
+        "readiness_check_type": "None",
+        "readiness_exec_command": [],
+        "readiness_port": "",
+        "readiness_url": "/",
+        "startup_check_type": "None",
+        "startup_exec_command": [],
+        "startup_port": "",
+        "startup_url": "/"
+      },
+      "ports": {
+        "8080": {
+          "port": "8080",
+          "protocol": "tcp"
         }
-      ]
-    }
+      },
+      "size": {
+        "cpu": "300m",
+        "memory": "1Gi"
+      }
+    },
+    "type": "application"
   },
-  "version": ""
+  "version": "0.1"
 }
