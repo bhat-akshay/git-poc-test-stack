@@ -1,1 +1,15 @@
-{}
+{
+  "disabled": false,
+  "flavor": "k8s",
+  "kind": "config_map",
+  "metadata": {
+    "name": "map-1"
+  },
+  "spec": {
+    "data": {
+      "note": "conflicting edit",
+      "owner": "branch-b"
+    }
+  },
+  "version": "0.1"
+}
